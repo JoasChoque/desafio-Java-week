@@ -21,7 +21,7 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     /*Listar todos os produtos*/
-    @GetMapping("/produtos")
+    @GetMapping("/produtos/all")
     @ResponseStatus(HttpStatus.OK)
     public List<Produto> listarProdutos(){
         return produtoService.listarProdutos();
@@ -35,13 +35,13 @@ public class ProdutoController {
     }
 
     /*Atualizar Produto pelo ID*/
-    @PutMapping("/cursos/{id}")
+    @PutMapping("/produtos/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Produto> atualizarPorId(@PathVariable(value="id")Long id,@RequestBody Produto produto){
         return produtoService.atualizarProdutoPeloId(produto,id);
     }
 
-    @DeleteMapping("/cursos/{id}")
+    @DeleteMapping("/produtos/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Object> deletarPorId(@PathVariable(value="id") Long id){
         return produtoService.apagarPeloId(id);
